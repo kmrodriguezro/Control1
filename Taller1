@@ -1,0 +1,28 @@
+%--------------Parametros de los sistemas ------------------------------------------------------
+kdc = [5 20 1 10];
+tau = [8 20 10 2];
+
+%--------------Planteamiento de las funciones de transferencia y uso de las funciones-----------
+for i = 1:4
+    
+  sys = tf(kdc(i), [tau(i), 1]);
+
+  figure(1)
+  hold on
+  bode(sys)
+  grid on
+  legend ('Kdc = 5 tau = 8','Kdc = 20 tau = 20','Kdc = 1 tau = 10', 'Kdc = 10 tau = 2')
+
+  figure(2)
+  hold on
+  step(sys,100)
+  grid on
+  legend ('Kdc = 5 tau = 8','Kdc = 20 tau = 20','Kdc = 1 tau = 10', 'Kdc = 10 tau = 2')
+
+  figure(3)
+  hold on
+  impulse(sys,100)
+  grid on
+  legend ('Kdc = 5 tau = 8','Kdc = 20 tau = 20','Kdc = 1 tau = 10', 'Kdc = 10 tau = 2')
+
+end
